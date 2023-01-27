@@ -96,7 +96,6 @@ class NotesHandler {
       const { id } = request.params;
 
       await this._service.editNoteById(id, request.payload);
-
       return {
         status: 'success',
         message: 'Catatan berhasil diperbarui',
@@ -114,10 +113,10 @@ class NotesHandler {
       // Server ERROR!
       const response = h.response({
         status: 'error',
-        message: 'Maaf, terjadi kegagal pada server kami.',
+        message: 'Maaf, terjadi kegagalan pada server kami.',
       });
       response.code(500);
-      console.log(error);
+      console.error(error);
       return response;
     }
   }
